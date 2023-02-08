@@ -26,9 +26,11 @@ class DogeCloudServiceProvider extends ServiceProvider
                 dirname(__DIR__) . '/config/dogecloud.php' => config_path('dogecloud.php'),
             ],'dogecloud-config');
         }
+        $this->mergeConfigFrom(dirname(__DIR__) . '/config/filesystems.php','filesystems');
         if (config('dogecloud.enable')) {
             DogeCloud::refreshDogeCloudToken();
-            Storage::extend('doge', function ($app, $config) {
+            Storage::extend('doge', function ($app) {
+                $config = config('dogecloud');
                 $config += ['version' => 'latest'];
                 $config['key'] = Cache::get('dogecloud.access_key_id');
                 $config['secret'] = Cache::get('dogecloud.secret_access_key');

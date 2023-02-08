@@ -2,6 +2,7 @@
 
 namespace Ufree\LaravelDogeCloud;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Config;
 
 class DogeCloud
 {
@@ -10,7 +11,8 @@ class DogeCloud
      */
     public static function refreshDogeCloudToken(): void
     {
-        $token = Cache::get('dogecloud.token','');
+
+        $token = Cache::get('dogecloud.token');
         if (empty($token)) {
             $api = self::dogeCloudApi('/auth/tmp_token.json', array(
                 "channel" => "OSS_FULL",
@@ -31,7 +33,7 @@ class DogeCloud
     {
         $accessKey = config('dogecloud.access_key');
         $secretKey = config('dogecloud.secret_key');
-
+        dd(config('app'));
         $body = $jsonMode ? json_encode($data) : http_build_query($data);
         $signStr = $apiPath . "\n" . $body;
         $sign = hash_hmac('sha1', $signStr, $secretKey);
