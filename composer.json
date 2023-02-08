@@ -1,5 +1,5 @@
 {
-    "name": "soda/laravel-doge-cloud",
+    "name": "ufree/laravel-doge-cloud",
     "description": "dogecloud s3 sdk for laravel",
     "keywords": ["s3","dogecloud","laravel"],
     "type": "library",
@@ -11,7 +11,7 @@
     },
     "authors": [
         {
-            "name": "soda",
+            "name": "ufree",
             "email": "me@sodagreen.love"
         }
     ],
