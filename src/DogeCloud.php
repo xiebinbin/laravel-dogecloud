@@ -33,7 +33,6 @@ class DogeCloud
     {
         $accessKey = config('dogecloud.access_key');
         $secretKey = config('dogecloud.secret_key');
-        dd(config('app'));
         $body = $jsonMode ? json_encode($data) : http_build_query($data);
         $signStr = $apiPath . "\n" . $body;
         $sign = hash_hmac('sha1', $signStr, $secretKey);
