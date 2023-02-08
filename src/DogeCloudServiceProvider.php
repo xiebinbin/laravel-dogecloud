@@ -1,5 +1,7 @@
 <?php
+
 namespace Ufree\LaravelDogeCloud;
+
 use Aws\S3\S3Client;
 use Exception;
 use Illuminate\Filesystem\AwsS3V3Adapter;
@@ -19,12 +21,12 @@ class DogeCloudServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if($this->app->runningInConsole()){
+        if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/config/dogecloud.php' => config_path('dogecloud.php'),
-            ]);
+                dirname(__DIR__) . '/config/dogecloud.php' => config_path('dogecloud.php'),
+            ],'dogecloud-config');
         }
-        if(config('dogecloud.enable')){
+        if (config('dogecloud.enable')) {
             DogeCloud::refreshDogeCloudToken();
             Storage::extend('doge', function ($app, $config) {
                 $config += ['version' => 'latest'];
@@ -44,7 +46,7 @@ class DogeCloudServiceProvider extends ServiceProvider
                 if ($config['read-only'] ?? false === true) {
                     $adapter = new ReadOnlyFilesystemAdapter($adapter);
                 }
-                if (! empty($config['prefix'])) {
+                if (!empty($config['prefix'])) {
                     $adapter = new PathPrefixedAdapter($adapter, $config['prefix']);
                 }
                 $driver = new Flysystem($adapter, Arr::only($config, [
