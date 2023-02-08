@@ -10,7 +10,7 @@ class DogeCloud
      */
     public static function refreshDogeCloudToken(): void
     {
-        $token = Cache::get('dogecloud.token');
+        $token = Cache::get('dogecloud.token','');
         if (empty($token)) {
             $api = self::dogeCloudApi('/auth/tmp_token.json', array(
                 "channel" => "OSS_FULL",
@@ -29,8 +29,8 @@ class DogeCloud
     }
     public static function dogeCloudApi($apiPath, $data = array(), $jsonMode = false)
     {
-        $accessKey = config('dogecloud.key');
-        $secretKey = config('dogecloud.secret');
+        $accessKey = config('dogecloud.access_key');
+        $secretKey = config('dogecloud.secret_key');
 
         $body = $jsonMode ? json_encode($data) : http_build_query($data);
         $signStr = $apiPath . "\n" . $body;
