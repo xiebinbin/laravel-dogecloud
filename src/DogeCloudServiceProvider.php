@@ -1,5 +1,5 @@
 <?php
-namespace Soda\LaravelDogeCloud;
+namespace Ufree\LaravelDogeCloud;
 use Aws\S3\S3Client;
 use Exception;
 use Illuminate\Filesystem\AwsS3V3Adapter;

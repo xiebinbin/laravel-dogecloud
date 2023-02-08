@@ -6,7 +6,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Soda\\LaravelDogeCloud\\": "src/"
+            "Ufree\\LaravelDogeCloud\\": "src/"
         }
     },
     "authors": [
@@ -25,7 +25,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Soda\\LaravelDogeCloud\\DogeCloudServiceProvider"
+                "Ufree\\LaravelDogeCloud\\DogeCloudServiceProvider"
             ]
         }
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Soda\LaravelDogeCloud;
+namespace Ufree\LaravelDogeCloud;
 use Illuminate\Support\Facades\Cache;
 
 class DogeCloud
