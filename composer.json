@@ -1,0 +1,32 @@
+{
+    "name": "soda/laravel-doge-cloud",
+    "description": "dogecloud s3 sdk for laravel",
+    "keywords": ["s3","dogecloud","laravel"],
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Soda\\LaravelDogeCloud\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "soda",
+            "email": "me@sodagreen.love"
+        }
+    ],
+    "require": {
+        "laravel/framework": "^9.0|^10.0",
+        "ext-curl": "*",
+        "aws/aws-sdk-php": "^3.258",
+        "league/flysystem": "^3.12",
+        "league/flysystem-aws-s3-v3": "^3.12"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Soda\\LaravelDogeCloud\\DogeCloudServiceProvider"
+            ]
+        }
+    }
+}
