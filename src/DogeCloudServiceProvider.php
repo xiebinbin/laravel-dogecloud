@@ -28,15 +28,7 @@ class DogeCloudServiceProvider extends ServiceProvider
         DogeCloud::refreshDogeCloudToken();
         Storage::extend('doge', function () {
             $config = DogeCloud::getConfig();
-            $adapter = new DogeCloudAdapter($config);
-            $driver = new Flysystem($adapter, Arr::only($config, [
-                'directory_visibility',
-                'disable_asserts',
-                'temporary_url',
-                'url',
-                'visibility',
-            ]));
-            return new AwsS3V3Adapter($driver, $adapter, $config, $adapter->getClient());
+            return new DogeCloudAdapter($config);
         });
 
     }
