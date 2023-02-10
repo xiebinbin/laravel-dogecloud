@@ -1,6 +1,5 @@
 <?php
 return [
-    'enable' => true,
     'access_key' => env('DOGE_ACCESS_KEY_ID', ''),
     'secret_key' => env('DOGE_SECRET_ACCESS_KEY', ''),
     'region' => 'automatic',

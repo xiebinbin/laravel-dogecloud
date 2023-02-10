@@ -20,7 +20,8 @@
         "ext-curl": "*",
         "aws/aws-sdk-php": "^3.258",
         "league/flysystem": "^3.12",
-        "league/flysystem-aws-s3-v3": "^3.12"
+        "league/flysystem-aws-s3-v3": "^3.12",
+        "guzzlehttp/guzzle": "^7.5"
     },
     "extra": {
         "laravel": {

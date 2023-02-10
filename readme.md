@@ -1,5 +1,9 @@
 ## dogecloud s3 for laravel
 
+### config file
+```angular2html
+config/dogecloud.php
+```
 ### step one: install this package
 ```angular2html
 composer require ufree/laravel-doge-cloud
