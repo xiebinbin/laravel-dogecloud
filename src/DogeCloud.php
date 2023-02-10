@@ -20,6 +20,7 @@ class DogeCloud
         Config::set('filesystems.disks.doge', [
             'driver' => 'doge',
         ]);
+        self::refreshDogeCloudToken();
     }
 
     /**
@@ -92,6 +93,7 @@ class DogeCloud
         }
         return $repData['data'];
     }
+
     /**
      * @param string $key
      * @return mixed
@@ -106,7 +108,7 @@ class DogeCloud
      * @param mixed $val
      * @return bool
      */
-    protected static function setCacheValue(string $key,mixed $val): bool
+    protected static function setCacheValue(string $key, mixed $val): bool
     {
         return Cache::put(self::CACHE_KEY . '.' . $key, $val, now()->addHours(2));
     }
@@ -117,11 +119,12 @@ class DogeCloud
     public static function getConfig(): mixed
     {
         $config = config('dogecloud');
-        unset($config['token'], $config['enable'], $config['access_key'], $config['secret_key']);
         $config += ['version' => 'latest'];
         $config['key'] = self::getCacheValue('access_key_id');
         $config['secret'] = self::getCacheValue('secret_access_key');
+        $config['token'] = self::getCacheValue('token');
         $config['credentials'] = Arr::only($config, ['key', 'secret', 'token']);
+        unset($config['token'],$config['access_key'], $config['secret_key']);
         return $config;
     }
 }
