@@ -15,6 +15,9 @@ class DogeCloud
 {
     const CACHE_KEY = 'dogecloud';
 
+    /**
+     * @throws GuzzleException
+     */
     public static function initConfig(): void
     {
         Config::set('filesystems.disks.doge', [

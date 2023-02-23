@@ -25,7 +25,6 @@ class DogeCloudServiceProvider extends ServiceProvider
             ], 'dogecloud-config');
         }
         DogeCloud::initConfig();
-        DogeCloud::refreshDogeCloudToken();
         Storage::extend('doge', function () {
             $config = DogeCloud::getConfig();
             return new DogeCloudAdapter($config);
