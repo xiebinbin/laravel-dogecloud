@@ -24,8 +24,8 @@ class DogeCloudServiceProvider extends ServiceProvider
                 dirname(__DIR__) . '/config/dogecloud.php' => config_path('dogecloud.php'),
             ], 'dogecloud-config');
         }
-        DogeCloud::initConfig();
         Storage::extend('doge', function () {
+            DogeCloud::initConfig();
             $config = DogeCloud::getConfig();
             return new DogeCloudAdapter($config);
         });
